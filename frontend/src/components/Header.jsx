@@ -1,5 +1,9 @@
 import { Disclosure } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  Bars3Icon,
+  XMarkIcon,
+  ShoppingBagIcon,
+} from "@heroicons/react/24/outline";
 
 const navigation = [
   { name: "About", href: "#", current: true },
@@ -15,7 +19,7 @@ const Header = () => {
         <>
           <div className="container mx-auto">
             <div className="flex h-16 items-center justify-between">
-              <div className="flex gap-12">
+              <div className="flex items-center gap-6 sm:gap-12">
                 {/* Logo */}
                 <div className="flex flex-shrink-0 items-center">
                   <img
@@ -26,7 +30,7 @@ const Header = () => {
                 </div>
 
                 {/* Nav */}
-                <div className="hidden sm:ml-6 sm:block">
+                <div className="hidden sm:block">
                   <div className="flex items-center space-x-3">
                     {navigation.map((item) => (
                       <a
@@ -39,6 +43,14 @@ const Header = () => {
                     ))}
                   </div>
                 </div>
+              </div>
+
+              <div className="hidden gap-4 sm:flex sm:items-center">
+                <div className="hidden text-sm lg:block">
+                  Free Delivery: <span className="font-semibold">3310-034</span>
+                </div>
+
+                <ShoppingBagIcon className="h-6 w-6" />
               </div>
 
               <div className="sm:hidden">
@@ -54,6 +66,21 @@ const Header = () => {
               </div>
             </div>
           </div>
+
+          <Disclosure.Panel className="sm:hidden">
+            <div className="space-y-1 px-2 pb-3 pt-2">
+              {navigation.map((item) => (
+                <Disclosure.Button
+                  key={item.name}
+                  as="a"
+                  href={item.href}
+                  className="block rounded-md px-3 py-2 text-sm hover:bg-gray-50"
+                >
+                  {item.name}
+                </Disclosure.Button>
+              ))}
+            </div>
+          </Disclosure.Panel>
         </>
       )}
     </Disclosure>
