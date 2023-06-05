@@ -38,4 +38,4 @@ Sigue los pasos a continuación para arrancar el proyecto:
    npm run dev
 
 2. Abre tu navegador y accede a http://localhost:3000 para ver la aplicación en funcionamiento.    
-    ![This is a alt text.](/src/assets/image/ImageReadme.png)
+    ![This is a alt text.](https://github.com/CarlosHernandez200/delimark/blob/main/frontend/src/assets/image/ImageReadme.png)
