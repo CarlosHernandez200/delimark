@@ -1,13 +1,15 @@
 import { Disclosure } from "@headlessui/react";
+import { Link } from "react-router-dom";
 import {
   Bars3Icon,
   XMarkIcon,
   ShoppingBagIcon,
 } from "@heroicons/react/24/outline";
 
+import { Mark } from "../assets/icons/iconsData";
 const navigation = [
-  { name: "About", href: "#", current: true },
-  { name: "Food Menu", href: "#", current: false },
+  { name: "Home", href: "/", current: true },
+  { name: "Food Menu", href: "/login", current: false },
   { name: "Our chefs", href: "#", current: false },
   { name: "Contact", href: "#", current: false },
 ];
@@ -24,7 +26,7 @@ const Header = () => {
                 <div className="flex flex-shrink-0 items-center">
                   <img
                     className="block h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                    src={Mark}
                     alt="Your Company"
                   />
                 </div>
@@ -33,13 +35,13 @@ const Header = () => {
                 <div className="hidden sm:block">
                   <div className="flex items-center space-x-3">
                     {navigation.map((item) => (
-                      <a
+                      <Link
                         key={item.name}
-                        href={item.href}
+                        to={item.href}
                         className="px-3 py-2 text-sm"
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
