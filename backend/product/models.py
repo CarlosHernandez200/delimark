@@ -13,16 +13,16 @@ class Category(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'category'
-        verbose_name_plural = 'Categories'
-        db_table = 'Categories'
+        verbose_name = "category"
+        verbose_name_plural = "Categories"
+        db_table = "Categories"
 
 
 def generate_filename(instance, filename):
-    ext = filename.split('.')[-1]
-    timestamp = datetime.now().strftime('%Y%m%d%H%M%S')
+    ext = filename.split(".")[-1]
+    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
     filename = f"{timestamp}.{ext}"
-    return os.path.join('static/image', filename)
+    return os.path.join("static/image", filename)
 
 
 class Product(models.Model):
@@ -38,6 +38,6 @@ class Product(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = 'product'
-        verbose_name_plural = 'products'
-        db_table = 'products'
+        verbose_name = "product"
+        verbose_name_plural = "products"
+        db_table = "products"

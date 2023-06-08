@@ -3,8 +3,12 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from api.models import User
-from api.serializers import UserSerializer, CustomTokenObtainPairSerializer
+from api.models import Customer, User
+from api.serializers import (
+    CustomerSerializer,
+    UserSerializer,
+    CustomTokenObtainPairSerializer,
+)
 
 
 class CustomTokenObtainPairView(TokenObtainPairView):
@@ -14,6 +18,18 @@ class CustomTokenObtainPairView(TokenObtainPairView):
 class RegisterUserView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    permission_classes = (AllowAny,)
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class RegisterCustomerView(generics.CreateAPIView):
+    queryset = Customer.objects.all()
+    serializer_class = CustomerSerializer
     permission_classes = (AllowAny,)
 
     def post(self, request, *args, **kwargs):
