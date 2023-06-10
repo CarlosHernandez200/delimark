@@ -11,7 +11,7 @@ const navigation = [
   { name: "Home", href: "/", current: true },
   { name: "Food Menu", href: "/login", current: false },
   { name: "Our chefs", href: "#", current: false },
-  { name: "Contact", href: "#", current: false },
+  { name: "Contact", href: "contact", current: false },
 ];
 
 const Header = () => {
