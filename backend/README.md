@@ -32,7 +32,7 @@ Sigue los pasos a continuación para configurar el proyecto en tu entorno local.
 
 Ejecuta el siguiente comando para instalar las dependencias necesarias:
 
-    python -m venv venv
+    pip install -r requirements.txt
 
 ## Migraciones
 
