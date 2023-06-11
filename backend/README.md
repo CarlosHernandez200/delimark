@@ -4,8 +4,8 @@
 
 Asegúrate de tener instalado lo siguiente en tu máquina:
 
-- python : https://www.python.org/ftp/python/3.11.3/python-3.11.3-amd64.exe
-- vscode : https://code.visualstudio.com/
+- Python: [Descargar aquí](https://www.python.org/ftp/python/3.11.3/python-3.11.3-amd64.exe)
+- Visual Studio Code: [Descargar aquí](https://code.visualstudio.com/)
 
 ## Configuración
 
@@ -15,14 +15,34 @@ Sigue los pasos a continuación para configurar el proyecto en tu entorno local.
 
    ```bash
    git clone https://github.com/CarlosHernandez200/delimark
-
+   
 2. Navega hasta la carpeta del proyecto:
 
-    ```bash
-    cd delimark/backend
+   ```bash
+   cd delimark/backend
+   
+## Crear un entorno virtual
 
-## Se crea un entorno virtual
+- Ejecuta el siguiente comando según tu sistema operativo:
 
-- `python -m venv venv`
-- `source venv/bin/activate` (linux)
-- `venv/Scripts/Activate.ps1` (windows)
+    - Linux: `python -m venv venv` y luego `source venv/bin/activate`
+    - Windows: `python -m venv venv` y luego `venv\Scripts\Activate.ps1`
+
+## Instalar los requisitos
+
+Ejecuta el siguiente comando para instalar las dependencias necesarias:
+
+    python -m venv venv
+
+## Migraciones
+
+Ejecuta los siguientes comandos para realizar las migraciones del proyecto:
+
+    python manage.py makemigrations
+    python manage.py migrate
+    
+## Iniciar el servidor
+
+Para iniciar el servidor, ejecuta el siguiente comando:
+
+    python manage.py runserver
