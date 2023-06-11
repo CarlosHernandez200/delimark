@@ -2,10 +2,13 @@ from rest_framework import generics, status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework import viewsets
 
-from api.models import Customer, User
+from api.models import Country, Customer, DocumentType, User
 from api.serializers import (
+    CountrySerializer,
     CustomerSerializer,
+    DocumentTypeSerializer,
     UserSerializer,
     CustomTokenObtainPairSerializer,
 )
@@ -37,3 +40,14 @@ class RegisterCustomerView(generics.CreateAPIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+class DocumentTypeViewSet(viewsets.ModelViewSet):
+    queryset = DocumentType.objects.all()
+    serializer_class = DocumentTypeSerializer
+    # permission_classes = (IsAuthenticated,)
+
+
+class CountryViewSet(viewsets.ModelViewSet):
+    queryset = Country.objects.all()
+    serializer_class = CountrySerializer
+    # permission_classes = (IsAuthenticated,)

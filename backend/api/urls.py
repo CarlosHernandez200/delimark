@@ -11,9 +11,11 @@ urlpatterns = [
     path("auth/register/", RegisterUserView.as_view(), name="register"),
     
     # Client Authentication
-    path("auth/client/", CustomTokenObtainPairView.as_view(), name="token_client"),
-    path( "auth/client/register/", RegisterCustomerView.as_view(), name="client_register"),
+    path("auth/customer/", CustomTokenObtainPairView.as_view(), name="token_customer"),
+    path( "auth/customer/register/", RegisterCustomerView.as_view(), name="customer_register"),
     
     # Api product
     path("", include("product.router")),
+        
+    path("", include("api.router")),
 ]
