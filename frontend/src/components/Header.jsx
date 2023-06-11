@@ -9,8 +9,7 @@ import {
 import { Mark } from "../assets/icons/iconsData";
 const navigation = [
   { name: "Home", href: "/", current: true },
-  { name: "Food Menu", href: "/login", current: false },
-  { name: "Our chefs", href: "#", current: false },
+  { name: "Food Menu", href: "/login", current: false },  
   { name: "Contact", href: "contact", current: false },
 ];
 

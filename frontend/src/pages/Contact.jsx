@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const Contact = () => {
   return (
     <section className="bg-white-100 py-10">
