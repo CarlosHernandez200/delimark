@@ -7,13 +7,25 @@ import {
 } from "@heroicons/react/24/outline";
 
 import { Mark } from "../assets/icons/iconsData";
+import Avatar from "./Avatar";
+import { useEffect, useState } from "react";
 const navigation = [
   { name: "Home", href: "/", current: true },
-  { name: "Food Menu", href: "/login", current: false },  
+  { name: "Food Menu", href: "#", current: false },
+  { name: "Our chefs", href: "#", current: false },
   { name: "Contact", href: "contact", current: false },
 ];
 
 const Header = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
   return (
     <Disclosure as="nav" className="w-full">
       {({ open }) => (
@@ -53,11 +65,15 @@ const Header = () => {
 
                 <ShoppingBagIcon className="h-6 w-6" />
 
-                <Link to="/login">
-                  <button className="rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                    Iniciar Session
-                  </button>
-                </Link>
+                {isLoggedIn ? (
+                  <Avatar />
+                ) : (
+                  <Link to="/login">
+                    <button className="rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                      Iniciar Session
+                    </button>
+                  </Link>
+                )}
               </div>
 
               <div className="sm:hidden">

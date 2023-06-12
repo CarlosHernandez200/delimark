@@ -1,3 +1,4 @@
+import { Toaster, toast } from "sonner";
 import { useState } from "react";
 
 const Login = () => {
@@ -21,16 +22,15 @@ const Login = () => {
 
       if (response.ok) {
         const { access, refresh } = await response.json();
-
         // Almacenar los tokens en el almacenamiento local del navegador
         localStorage.setItem("accessToken", access);
         localStorage.setItem("refreshToken", refresh);
+
+        window.location.href = "/";
       } else {
         const errorData = await response.json();
-        console.log(errorData);
+        toast.error(errorData.detail);
       }
-
-      console.log(response);
     } catch (err) {
       console.log(err);
     }
@@ -38,6 +38,7 @@ const Login = () => {
 
   return (
     <div className="container mx-auto">
+      <Toaster richColors />
       <div className="flex flex-1 flex-col justify-center px-6 py-12 ">
         <div className="mx-auto">
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
