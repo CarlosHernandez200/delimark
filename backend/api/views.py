@@ -1,16 +1,24 @@
+from django.conf import settings
 from rest_framework import generics, status
+from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import viewsets
+from django.core.mail import send_mail
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 
-from api.models import Country, Customer, DocumentType, User
+
+
+from api.models import Country, Customer, DocumentType, User, SentEmail
 from api.serializers import (
     CountrySerializer,
     CustomerSerializer,
     DocumentTypeSerializer,
     UserSerializer,
     CustomTokenObtainPairSerializer,
+    SentEmailSerializer        
 )
 
 
@@ -51,3 +59,23 @@ class CountryViewSet(viewsets.ModelViewSet):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
     # permission_classes = (IsAuthenticated,)
+
+
+class SendEmailView(generics.CreateAPIView):
+    queryset = SentEmail.objects.all()
+    serializer_class = SentEmailSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        
+        recipients = serializer.validated_data['recipients']
+        subject = serializer.validated_data['subject']
+        message = serializer.validated_data['message']
+        
+        send_mail(subject, message, settings.EMAIL_HOST_USER, [recipients], fail_silently=False)        
+
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        
+        return Response(serializer.data, status=status.HTTP_200_OK, headers=headers)

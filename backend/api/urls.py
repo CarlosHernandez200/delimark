@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenRefreshView
 
-from api.views import CustomTokenObtainPairView, RegisterCustomerView, RegisterUserView
+from api.views import CustomTokenObtainPairView, RegisterCustomerView, RegisterUserView, SendEmailView
 
 urlpatterns = [
     
@@ -13,6 +13,8 @@ urlpatterns = [
     # Client Authentication
     path("auth/customer/", CustomTokenObtainPairView.as_view(), name="token_customer"),
     path( "auth/customer/register/", RegisterCustomerView.as_view(), name="customer_register"),
+    
+    path('send-email/', SendEmailView.as_view(), name='send_email'),
     
     # Api product
     path("", include("product.router")),

@@ -58,3 +58,10 @@ class Customer(User):
         verbose_name = "Customer"
         verbose_name_plural = "Customers"
         ordering = ["id"]
+
+
+class SentEmail(models.Model):
+    subject = models.CharField(max_length=255)
+    message = models.TextField()
+    recipients = models.TextField()
+    sent_date = models.DateTimeField(auto_now_add=True)

@@ -2,7 +2,7 @@ from django.contrib.auth.hashers import make_password
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
-from api.models import Country, Customer, DocumentType, User
+from api.models import Country, Customer, DocumentType, User, SentEmail
 
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -80,3 +80,10 @@ class CountrySerializer(serializers.ModelSerializer):
     class Meta:
         model = Country
         fields = "__all__"
+
+
+class SentEmailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SentEmail
+        fields = "__all__"
+    
