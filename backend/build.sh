@@ -1,13 +1,10 @@
 #!/bin/bash
 
-# Build the project
-echo "Building the project..."
-python3.9 -m pip install -r requirements.txt
+echo "El directorio actual es: $PWD"
 
-echo "Make Migration..."
-python3.9 manage.py makemigrations api --noinput
-python3.9 manage.py makemigrations product --noinput
-python3.9 manage.py migrate --noinput
+python3 -m venv venv
 
-echo "Collect Static..."
-python3.9 manage.py collectstatic --noinput --clear
+source venv/bin/activate
+
+python3 pip install -r requirements.txt
+
