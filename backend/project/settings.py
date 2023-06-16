@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-4c-g=b@6$y8#1--*3($@&6=w_m%v%d%fa792g4pl3y3*!(2*w!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -191,5 +191,3 @@ EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-
-WSGI_APPLICATION = 'vercel_app.wsgi.app'
