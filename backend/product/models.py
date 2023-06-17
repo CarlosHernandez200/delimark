@@ -26,7 +26,7 @@ def generate_filename(instance, filename):
 
 
 class Product(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.PROTECT)
     name = models.CharField(max_length=100)
     price = models.IntegerField()
     description = models.TextField(max_length=250, blank=True, null=True)

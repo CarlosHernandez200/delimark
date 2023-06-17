@@ -17,7 +17,8 @@ urlpatterns = [
     path('send-email/', SendEmailView.as_view(), name='send_email'),
     
     # Api product
-    path("", include("product.router")),
+    path("product/", include("product.urls")),
+    path('product-filter/', include('product.urls')),
         
-    path("", include("api.router")),
+    #path("", include("api.router")),
 ]
