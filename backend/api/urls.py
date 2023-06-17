@@ -18,6 +18,7 @@ urlpatterns = [
     
     # Api product
     path("", include("product.router")),
+    path('product-filter/', include('product.urls')),
         
-    path("", include("api.router")),
+    #path("", include("api.router")),
 ]
