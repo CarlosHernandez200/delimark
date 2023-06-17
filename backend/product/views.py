@@ -11,10 +11,14 @@ from product.serializers import ProductSerializer, CategorySerializer
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    # permission_classes = (IsAuthenticated,)
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        params = self.request.query_params.get("category")
+        if params:
+            queryset = queryset.filter(category__name=params)
+        return queryset
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    # permission_classes = (IsAuthenticated,)
