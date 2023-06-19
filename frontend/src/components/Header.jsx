@@ -11,7 +11,7 @@ import Avatar from "./Avatar";
 import { useEffect, useState } from "react";
 const navigation = [
   { name: "Home", href: "/", current: true },
-  { name: "Food Menu", href: "#", current: false },  
+  { name: "Food Menu", href: "food", current: false },
   { name: "Contact", href: "contact", current: false },
 ];
 
