@@ -24,7 +24,11 @@ urlpatterns = [
     path('send-email/', SendEmailView.as_view(), name='send_email'),
     
     # Api product
+<<<<<<< HEAD
     path("product/", include("product.urls")),
+=======
+    path("", include("product.router")),
+>>>>>>> f5b5c6fb6215a321e751ddca2f803f10d462cabc
     path('product-filter/', include('product.urls')),
         
     #path("", include("api.router")),

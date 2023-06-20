@@ -13,8 +13,11 @@ router.register(r"Product", views.ProductViewSet, "producto")
 
 urlpatterns = [
     path("", include(router.urls)),
+<<<<<<< HEAD
     #path("docs/", include_docs_urls(title="Producto API")),
     #path("/categoria")
+=======
+>>>>>>> f5b5c6fb6215a321e751ddca2f803f10d462cabc
 ]
 
 if settings.DEBUG:

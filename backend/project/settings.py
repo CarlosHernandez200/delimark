@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-4c-g=b@6$y8#1--*3($@&6=w_m%v%d%fa792g4pl3y3*!(2*w!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -45,12 +45,20 @@ INSTALLED_APPS = [
     'rest_framework',
     'api.apps.ApiConfig',
     'product.apps.ProductConfig',
+<<<<<<< HEAD
     'django_filters'
+=======
+    'django_filters',
+>>>>>>> f5b5c6fb6215a321e751ddca2f803f10d462cabc
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+<<<<<<< HEAD
     'DEFAULT_AUTHENTICATION_CLASSES': [
+=======
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+>>>>>>> f5b5c6fb6215a321e751ddca2f803f10d462cabc
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 }
@@ -194,5 +202,8 @@ EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+<<<<<<< HEAD
 
 #WSGI_APPLICATION = 'vercel_app.wsgi.app'
+=======
+>>>>>>> f5b5c6fb6215a321e751ddca2f803f10d462cabc
