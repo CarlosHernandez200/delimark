@@ -8,7 +8,8 @@ import {
 
 import { Mark } from "../assets/icons/iconsData";
 import Avatar from "./Avatar";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { OpenCartContext } from "../context/OpenCartContext";
 const navigation = [
   { name: "Home", href: "/", current: true },
   { name: "Food Menu", href: "food", current: false },
@@ -17,6 +18,7 @@ const navigation = [
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { opeState } = useContext(OpenCartContext);
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
@@ -62,7 +64,10 @@ const Header = () => {
                   Free Delivery: <span className="font-semibold">3310-034</span>
                 </div>
 
-                <ShoppingBagIcon className="h-6 w-6" />
+                <ShoppingBagIcon
+                  className="h-6 w-6 cursor-pointer"
+                  onClick={opeState}
+                />
 
                 {isLoggedIn ? (
                   <Avatar />
