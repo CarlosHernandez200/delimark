@@ -1,5 +1,5 @@
 from django.conf import settings
-from rest_framework import generics, status
+from rest_framework import generics, status, viewsets
 from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -8,6 +8,7 @@ from rest_framework import viewsets
 from django.core.mail import send_mail
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
+from .models import Country
 
 
 
@@ -58,7 +59,12 @@ class DocumentTypeViewSet(viewsets.ModelViewSet):
 class CountryViewSet(viewsets.ModelViewSet):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
-    # permission_classes = (IsAuthenticated,)
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
 
 
 class SendEmailView(generics.CreateAPIView):
