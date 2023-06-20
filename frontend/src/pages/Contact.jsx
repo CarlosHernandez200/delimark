@@ -22,8 +22,7 @@ export const Contact = () => {
         }),
       });
 
-      if (response.ok) {
-        console.log(response);
+      if (response.ok) {        
         toast.success("correo enviado");
       } else {
         const errorData = await response.json();

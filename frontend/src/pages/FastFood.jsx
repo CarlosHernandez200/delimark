@@ -10,8 +10,6 @@ const FastFood = () => {
     status: "All",
   });
 
-  console.log(filters);
-
   const filterProducts = (products) => {
     return products.filter((product) => {
       return filters.status === product.status || filters.status === "All";

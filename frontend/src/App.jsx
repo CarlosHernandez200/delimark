@@ -5,12 +5,13 @@ import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import FastFood from "./pages/FastFood";
 import { Contact } from "./pages/Contact";
-
+import ShoppingCarts from "./components/ShoppingCarts";
 const App = () => {
   return (
     <div className="overflow-hidden bg-white">
       <BrowserRouter>
         <Header />
+        <ShoppingCarts/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
