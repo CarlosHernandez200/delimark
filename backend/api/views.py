@@ -79,9 +79,12 @@ class SendEmailView(generics.CreateAPIView):
         subject = serializer.validated_data['subject']
         message = serializer.validated_data['message']
         
-        send_mail(subject, message, settings.EMAIL_HOST_USER, [recipients], fail_silently=False)        
+        try:
+            send_mail(subject, message, settings.EMAIL_HOST_USER, [recipients], fail_silently=False)
+        except Exception as error:
+            return Response({'error': 'Failed to send email.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
-        
-        return Response(serializer.data, status=status.HTTP_200_OK, headers=headers)
+
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)

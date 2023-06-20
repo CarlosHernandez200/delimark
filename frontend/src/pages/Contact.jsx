@@ -22,12 +22,11 @@ export const Contact = () => {
         }),
       });
 
-      if (response.ok) {
-        console.log(response);
+      if (response.ok) {        
         toast.success("correo enviado");
       } else {
         const errorData = await response.json();
-        toast.error(errorData.detail);
+        toast.error(errorData.error);
       }
     } catch (err) {
       console.log(err);
@@ -36,7 +35,7 @@ export const Contact = () => {
 
   return (
     <section className="bg-white-100 py-10">
-      <Toaster richColors  />
+      <Toaster richColors />
       <div className="container mx-auto px-4">
         <h2 className="mb-6 text-3xl font-bold">Contacto</h2>
         <form className="-mx-4 flex flex-wrap" onSubmit={handleSubmit}>

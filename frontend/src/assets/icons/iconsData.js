@@ -9,6 +9,7 @@ import { default as CakesIcon } from "./CakesIcon.svg";
 import { default as PizzaIcon } from "./PizzaIcon.svg";
 import { default as IceCreamIcon } from "./IceCreamIcon.svg";
 export { default as Mark } from "./Mark.svg";
+export { default as Blob } from "./Blob.svg";
 
 const items = [
   { icon: TacosIcon, label: "Tacos" },
