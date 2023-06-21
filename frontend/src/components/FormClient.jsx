@@ -1,8 +1,7 @@
 import { Toaster, toast } from "sonner";
 import { useState } from "react";
 
-const FormClient = () => {
-  const user_id = localStorage.getItem("user_id");
+const FormClient = ({userId}) => {
 
   const [formData, setFormData] = useState({
     name: "",
@@ -10,7 +9,7 @@ const FormClient = () => {
     price: 0,
     description: "",
     image: null,
-    user: user_id,
+    user: userId,
   });
 
   const handleChange = (event) => {
