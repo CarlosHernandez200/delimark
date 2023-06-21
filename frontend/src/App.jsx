@@ -8,6 +8,7 @@ import Register from "./pages/Register";
 import ShoppingCarts from "./components/ShoppingCarts";
 import CreateProduct from "./pages/CreateProduct"
 import NotFound from "./pages/NotFound";
+import { Footer } from "./components/Footer";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/create-product" element={<CreateProduct />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer/>
     </div>
   );
 };
