@@ -11,31 +11,43 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    try {
-      const response = await fetch("http://127.0.0.1:8000/api/auth/token/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
+    const promise = () =>
+      new Promise((resolve, reject) => {
+        fetch("http://127.0.0.1:8000/api/auth/token/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+          }),
+        })
+          .then((response) => {
+            if (response.ok) {
+              resolve(response.json());
+            } else {
+              reject(response.statusText);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+            reject("Connection Failed");
+          });
       });
 
-      if (response.ok) {
-        const { access, refresh } = await response.json();
-        // Almacenar los tokens en el almacenamiento local del navegador
+    toast.promise(promise, {
+      loading: "Loading...",
+      success: (data) => {
+        const { access, refresh } = data;
         localStorage.setItem("accessToken", access);
         localStorage.setItem("refreshToken", refresh);
-        handleLogin();        
-      } else {
-        const errorData = await response.json();
-        toast.error(errorData.detail);
-      }
-    } catch (err) {
-      toast.error(err);
-    }
+        handleLogin();
+      },
+      error: (error) => {
+        return error;
+      },
+    });
   };
 
   return (
