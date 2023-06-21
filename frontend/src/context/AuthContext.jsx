@@ -4,19 +4,16 @@ import { useNavigate } from "react-router-dom";
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isClient, setIsClient] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);  
   const navigate = useNavigate();
+  const isClient = localStorage.getItem("is_client");
 
   useEffect(() => {
-    const token = localStorage.getItem("accessToken");
-    const is_client = localStorage.getItem("is_client");
-
-    setIsClient(!!is_client);
+    const token = localStorage.getItem("accessToken");        
     setIsLoggedIn(!!token);
   }, []);
 
-  const handleLogin = () => {
+  const handleLogin = () => {                
     // isLoggedIn
     setIsLoggedIn(true);
     navigate("/");
