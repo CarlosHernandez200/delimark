@@ -9,6 +9,7 @@ import ShoppingCarts from "./components/ShoppingCarts";
 import CreateProduct from "./pages/CreateProduct"
 import NotFound from "./pages/NotFound";
 import Order from './pages/Order';
+import { Footer } from "./components/Footer";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/create-product" element={<CreateProduct />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer/>
     </div>
   );
 };
