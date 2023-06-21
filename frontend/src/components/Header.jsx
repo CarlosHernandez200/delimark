@@ -27,7 +27,7 @@ const Header = () => {
 
     const clientMenu = [
       ...userMenu,
-      { name: "Client Menu", href: "client", current: false },
+      { name: "Client Menu", href: "create-product", current: false },
     ];
 
     const updatedNavigation = isLoggedIn

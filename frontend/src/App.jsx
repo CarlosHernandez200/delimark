@@ -6,6 +6,7 @@ import FastFood from "./pages/FastFood";
 import Contact from "./pages/Contact";
 import Register from "./pages/Register";
 import ShoppingCarts from "./components/ShoppingCarts";
+import CreateProduct from "./pages/CreateProduct"
 import NotFound from "./pages/NotFound";
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/food" element={<FastFood />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/create-product" element={<CreateProduct />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
