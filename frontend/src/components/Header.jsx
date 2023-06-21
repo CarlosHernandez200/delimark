@@ -1,15 +1,17 @@
-import { Disclosure } from "@headlessui/react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Disclosure } from "@headlessui/react";
+import { Mark } from "../assets/icons/iconsData";
+import { AuthContext } from "../context/AuthContext";
+import { OpenCartContext } from "../context/OpenCartContext";
+import Avatar from "./Avatar";
+
 import {
   Bars3Icon,
   XMarkIcon,
   ShoppingBagIcon,
 } from "@heroicons/react/24/outline";
 
-import { Mark } from "../assets/icons/iconsData";
-import Avatar from "./Avatar";
-import { useContext, useEffect, useState } from "react";
-import { OpenCartContext } from "../context/OpenCartContext";
 const navigation = [
   { name: "Home", href: "/", current: true },
   { name: "Food Menu", href: "food", current: false },
@@ -17,15 +19,8 @@ const navigation = [
 ];
 
 const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { opeState } = useContext(OpenCartContext);
-
-  useEffect(() => {
-    const token = localStorage.getItem("accessToken");
-    if (token) {
-      setIsLoggedIn(true);
-    }
-  }, []);
+  const { isLoggedIn } = useContext(AuthContext);
 
   return (
     <Disclosure as="nav" className="w-full">

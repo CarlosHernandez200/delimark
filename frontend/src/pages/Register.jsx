@@ -1,110 +1,107 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Toaster, toast } from 'sonner'
+import { Toaster, toast } from "sonner";
 
-export const Register = () => {
+const Register = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    username: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    cell: '',
-    country: '',
-    address: '',
-    password: ''
+    username: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    cell: "",
+    country: "",
+    address: "",
+    password: "",
   });
   const [countryList, setCountryList] = useState([]);
 
   useEffect(() => {
     const fetchCountryList = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/country/');
+        const response = await fetch("http://127.0.0.1:8000/api/country/");
         if (response.ok) {
           const data = await response.json();
           setCountryList(data);
         } else {
-          console.error('Error fetching country list:', response.status);
+          console.error("Error fetching country list:", response.status);
         }
       } catch (error) {
-        console.error('Error fetching country list:', error);
+        console.error("Error fetching country list:", error);
       }
     };
 
     fetchCountryList();
   }, []);
 
-
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
   const handleClick = () => {
     if (
-      formData.username !== '' &&
-      formData.firstName !== '' &&
-      formData.lastName !== '' &&
-      formData.email !== '' &&
-      formData.cell !== '' &&
-      formData.country !== '' &&
-      formData.address !== '' &&
-      formData.password !== ''
+      formData.username !== "" &&
+      formData.firstName !== "" &&
+      formData.lastName !== "" &&
+      formData.email !== "" &&
+      formData.cell !== "" &&
+      formData.country !== "" &&
+      formData.address !== "" &&
+      formData.password !== ""
     ) {
       const promise = new Promise((resolve) => setTimeout(resolve, 2000));
 
       toast.promise(promise, {
-        loading: 'Loading...',
-        success:  (data) => {
+        loading: "Loading...",
+        success: (data) => {
           // Mostrar toast de éxito y luego redireccionar
-          toast.success('Form submitted successfully');
-          console.log('inicio');
+          toast.success("Form submitted successfully");
+          console.log("inicio");
           setTimeout(() => {
-            navigate('/login', { replace: true });
+            navigate("/login", { replace: true });
           }, 7000);
-          console.log('fin');
+          console.log("fin");
         },
-        error: 'Error',
+        error: "Error",
       });
     } else {
-      toast.error('You have not completed the fields')
-      const errorMessage = 'Please, complete the following fields';
+      toast.error("You have not completed the fields");
+      const errorMessage = "Please, complete the following fields";
       // Muestra el mensaje de error como desees
     }
   };
-
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const requestBody = {
       ...formData,
-      country: formData.country
+      country: formData.country,
     };
 
-    fetch('http://127.0.0.1:8000/api/auth/register/', {
-      method: 'POST',
+    fetch("http://127.0.0.1:8000/api/auth/register/", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(requestBody)
+      body: JSON.stringify(requestBody),
     })
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         // Realizar acciones con la respuesta del servidor
         //Redireccionar a otra ruta
         handleClick();
       })
-      .catch(error => {
+      .catch((error) => {
         // Manejar errores
       });
-
   };
 
   return (
-    <div className="max-w-md mx-auto">
-      <h2 className="text-2xl font-bold mb-4">Sign up</h2>
+    <div className="mx-auto max-w-md">
+      <h2 className="mb-4 text-2xl font-bold">Sign up</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="username" className="block mb-2">
+          <label htmlFor="username" className="mb-2 block">
             Username:
           </label>
           <input
@@ -114,11 +111,11 @@ export const Register = () => {
             value={formData.username}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded"
+            className="w-full rounded border border-gray-300 px-3 py-2"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="firstName" className="block mb-2">
+          <label htmlFor="firstName" className="mb-2 block">
             First Name:
           </label>
           <input
@@ -128,11 +125,11 @@ export const Register = () => {
             value={formData.firstName}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded"
+            className="w-full rounded border border-gray-300 px-3 py-2"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="lastName" className="block mb-2">
+          <label htmlFor="lastName" className="mb-2 block">
             Last Name:
           </label>
           <input
@@ -142,11 +139,11 @@ export const Register = () => {
             value={formData.lastName}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded"
+            className="w-full rounded border border-gray-300 px-3 py-2"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="email" className="block mb-2">
+          <label htmlFor="email" className="mb-2 block">
             Email:
           </label>
           <input
@@ -156,11 +153,11 @@ export const Register = () => {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded"
+            className="w-full rounded border border-gray-300 px-3 py-2"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="cell" className="block mb-2">
+          <label htmlFor="cell" className="mb-2 block">
             Cell:
           </label>
           <input
@@ -170,11 +167,11 @@ export const Register = () => {
             value={formData.cell}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded"
+            className="w-full rounded border border-gray-300 px-3 py-2"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="country" className="block mb-2">
+          <label htmlFor="country" className="mb-2 block">
             Country:
           </label>
           <select
@@ -183,16 +180,18 @@ export const Register = () => {
             value={formData.country}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded"
+            className="w-full rounded border border-gray-300 px-3 py-2"
           >
             <option value="">Select a country</option>
-            {countryList.map(country => (
-              <option key={country.id} value={country.id}>{country.name}</option>
+            {countryList.map((country) => (
+              <option key={country.id} value={country.id}>
+                {country.name}
+              </option>
             ))}
           </select>
         </div>
         <div className="mb-4">
-          <label htmlFor="address" className="block mb-2">
+          <label htmlFor="address" className="mb-2 block">
             Address:
           </label>
           <input
@@ -202,11 +201,11 @@ export const Register = () => {
             value={formData.address}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded"
+            className="w-full rounded border border-gray-300 px-3 py-2"
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="password" className="block mb-2">
+          <label htmlFor="password" className="mb-2 block">
             Password:
           </label>
           <input
@@ -216,13 +215,14 @@ export const Register = () => {
             value={formData.password}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded"
+            className="w-full rounded border border-gray-300 px-3 py-2"
           />
         </div>
         <Toaster position="bottom-right" />
         <button
-          type="submit" onClick={handleSubmit}
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+          type="submit"
+          onClick={handleSubmit}
+          className="rounded bg-blue-500 px-4 py-2 text-white"
         >
           Register
         </button>
@@ -230,3 +230,5 @@ export const Register = () => {
     </div>
   );
 };
+
+export default Register;

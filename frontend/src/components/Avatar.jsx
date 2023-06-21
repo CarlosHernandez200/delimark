@@ -1,7 +1,10 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { Menu, Transition } from "@headlessui/react";
+import { AuthContext } from "../context/AuthContext";
 
 const Avatar = () => {
+  const { handleLogout } = useContext(AuthContext);
+
   return (
     <>
       {/* Profile dropdown */}
@@ -38,11 +41,7 @@ const Avatar = () => {
               <a
                 href="#"
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                onClick={() => {
-                  localStorage.removeItem("accessToken");
-                  console.log("Limpiar el token de autenticación");
-                  window.location.href = "/login";
-                }}
+                onClick={() => handleLogout()}
               >
                 Sign out
               </a>

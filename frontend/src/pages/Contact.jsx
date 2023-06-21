@@ -1,7 +1,7 @@
 import { Toaster, toast } from "sonner";
 import { useState } from "react";
 
-export const Contact = () => {
+const Contact = () => {
   const [subject, setSubject] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -22,7 +22,7 @@ export const Contact = () => {
         }),
       });
 
-      if (response.ok) {        
+      if (response.ok) {
         toast.success("correo enviado");
       } else {
         const errorData = await response.json();
@@ -73,3 +73,5 @@ export const Contact = () => {
     </section>
   );
 };
+
+export default Contact;
