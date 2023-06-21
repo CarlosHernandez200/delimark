@@ -12,9 +12,9 @@ const ProductProvider = ({ children }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       // cambiar la api, por la del backend
-      const response = await fetch("https://rickandmortyapi.com/api/character");
+      const response = await fetch("http://127.0.0.1:8000/api/product/");
       const data = await response.json();
-      setProducts(data.results);
+      setProducts(data);
     };
 
     fetchProducts();
