@@ -2,7 +2,7 @@ import { ShoppingCartIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useCard } from "../hooks/useCard";
 import { Toaster, toast } from "sonner";
 import { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Products = ({ products }) => {
   const { addToCard, cart, removeFromCart } = useCard();
@@ -37,7 +37,7 @@ const Products = ({ products }) => {
     }
   };
 
-  console.log(products)
+  console.log(products);
 
   return (
     <>
@@ -71,10 +71,11 @@ const Products = ({ products }) => {
                 </p>
               </div>
               <button
-                className={`mt-4 flex w-full justify-center gap-x-2 rounded-md py-2 ${isProductInCart
+                className={`mt-4 flex w-full justify-center gap-x-2 rounded-md py-2 ${
+                  isProductInCart
                     ? "bg-red-600 text-white"
                     : "bg-indigo-600 text-white"
-                  }`}
+                }`}
                 onClick={() =>
                   checkLoginMiddleware(
                     isLogged,
@@ -97,7 +98,10 @@ const Products = ({ products }) => {
                   </>
                 )}
               </button>
-              <Link to={'/food/pruduct/' + product.id} className="flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-green-500 rounded-md p-4 py-2 px-4 m-4">
+              <Link
+                to={"/food/pruduct/" + product.id}
+                className="m-4 flex items-center justify-center rounded-md bg-green-500 p-4 px-4 py-2 text-sm font-medium text-white"
+              >
                 Details
               </Link>
             </div>
