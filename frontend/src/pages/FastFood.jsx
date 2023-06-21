@@ -5,7 +5,7 @@ import { ProductContext } from "../context/ProductContext";
 import Filters from "../components/Filters";
 
 const FastFood = () => {
-  const products = useContext(ProductContext);
+  const {products} = useContext(ProductContext);
   const [filters, SetFilters] = useState({
     status: "All",
   });

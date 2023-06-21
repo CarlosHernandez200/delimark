@@ -1,8 +1,7 @@
 import { Toaster, toast } from "sonner";
 import { useState } from "react";
 
-const FormClient = ({userId}) => {
-
+const FormClient = ({ userId, onAddProduct }) => {
   const [formData, setFormData] = useState({
     name: "",
     category: "",
@@ -51,6 +50,7 @@ const FormClient = ({userId}) => {
     toast.promise(promise, {
       loading: "Loading...",
       success: (data) => {
+        onAddProduct(data);
         return `Product "${data.name}" created successfully!`;
       },
       error: (error) => {

@@ -1,9 +1,16 @@
-const ListProductByClient = ({ products }) => {
+const ListProductByClient = ({ products, userId, onDeleteProduct }) => {
+  const filterProductsByClient = (products) => {
+    return products.filter((product) => {
+      return product.user == userId;
+    });
+  };
+
+  const filterdProductsByClient = filterProductsByClient(products);
   return (
     <div className="mt-8">
       <div className="flow-root">
         <ul role="list" className="-my-6 divide-y divide-gray-200">
-          {products.map((product) => (
+          {filterdProductsByClient.map((product) => (
             <li key={product.id} className="flex py-6">
               <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                 <img
@@ -26,12 +33,20 @@ const ListProductByClient = ({ products }) => {
                 <div className="flex flex-1 items-end justify-between text-sm">
                   <p className="flex text-gray-500">Qty {product.quantity}</p>
 
-                  <div className="flex">
+                  <div className="flex gap-x-4">
                     <button
                       type="button"
                       className="font-medium text-indigo-600 hover:text-indigo-500"
+                      onClick={() => onDeleteProduct(product.id)}
                     >
                       Remove
+                    </button>
+                    <button
+                      type="button"
+                      className="font-medium text-indigo-600 hover:text-indigo-500"
+                      onClick={() => onDeleteProduct(product.id)}
+                    >
+                      Update
                     </button>
                   </div>
                 </div>
