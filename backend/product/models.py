@@ -2,6 +2,7 @@ import os
 from datetime import datetime
 
 from django.db import models
+from api.models import User
 
 
 class Category(models.Model):
@@ -22,11 +23,12 @@ def generate_filename(instance, filename):
     ext = filename.split(".")[-1]
     timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
     filename = f"{timestamp}.{ext}"
-    return os.path.join("static/image", filename)
+    return os.path.join("image", filename)
 
 
 class Product(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.PROTECT, blank=True, null=True)
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, blank=True, null=True)
     name = models.CharField(max_length=100)
     price = models.IntegerField()
     description = models.TextField(max_length=250, blank=True, null=True)
