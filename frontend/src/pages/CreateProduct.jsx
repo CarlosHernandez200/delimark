@@ -1,7 +1,16 @@
+import FormClient from "../components/FormClient";
+
 const CreateProduct = () => {
   return (
-    <div>CreateProduct</div>
-  )
-}
+    <div className="w-full">
+      <div className="container mx-auto flex">
+        <div className="flex-1"></div>
+        <div className="flex-1">
+          <FormClient />
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default CreateProduct
+export default CreateProduct;
