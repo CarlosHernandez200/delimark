@@ -33,6 +33,7 @@ class User(AbstractUser):
     country = models.ForeignKey(Country, on_delete=models.PROTECT, null=True)
     address = models.CharField(max_length=250)
     cell = models.CharField(max_length=50)
+    is_client = models.BooleanField(default=False)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["username", "password"]
