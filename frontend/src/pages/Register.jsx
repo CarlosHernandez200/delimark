@@ -19,7 +19,7 @@ export const Register = () => {
   useEffect(() => {
     const fetchCountryList = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/api/auth/country/');
+        const response = await fetch('http://127.0.0.1:8000/api/country/');
         if (response.ok) {
           const data = await response.json();
           setCountryList(data);
