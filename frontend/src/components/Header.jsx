@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Disclosure } from "@headlessui/react";
 import { Mark } from "../assets/icons/iconsData";
@@ -12,15 +12,32 @@ import {
   ShoppingBagIcon,
 } from "@heroicons/react/24/outline";
 
-const navigation = [
-  { name: "Home", href: "/", current: true },
-  { name: "Food Menu", href: "food", current: false },
-  { name: "Contact", href: "contact", current: false },
-];
-
 const Header = () => {
   const { opeState } = useContext(OpenCartContext);
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, isClient } = useContext(AuthContext);
+
+  const [navigation, setNavigation] = useState([]);
+
+  useEffect(() => {
+    const userMenu = [
+      { name: "Home", href: "/", current: true },
+      { name: "Food Menu", href: "food", current: false },
+      { name: "Contact", href: "contact", current: false },
+    ];
+
+    const clientMenu = [
+      ...userMenu,
+      { name: "Client Menu", href: "client", current: false },
+    ];
+
+    const updatedNavigation = isLoggedIn
+      ? isClient
+        ? clientMenu
+        : [...userMenu, { name: "User Menu", href: "user", current: false }]
+      : userMenu;
+
+    setNavigation(updatedNavigation);
+  }, [isLoggedIn, isClient]);
 
   return (
     <Disclosure as="nav" className="w-full">

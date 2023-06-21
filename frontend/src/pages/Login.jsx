@@ -39,9 +39,12 @@ const Login = () => {
     toast.promise(promise, {
       loading: "Loading...",
       success: (data) => {
-        const { access, refresh } = data;
+        const { access, refresh, user_id, is_client } = data;
         localStorage.setItem("accessToken", access);
         localStorage.setItem("refreshToken", refresh);
+        localStorage.setItem("user_id", user_id);
+        localStorage.setItem("is_client", is_client);
+        
         handleLogin();
       },
       error: (error) => {

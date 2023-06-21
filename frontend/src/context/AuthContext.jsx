@@ -5,10 +5,14 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
+    const is_client = localStorage.getItem("is_client");
+
+    setIsClient(!!is_client);
     setIsLoggedIn(!!token);
   }, []);
 
@@ -26,7 +30,9 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, handleLogin, handleLogout }}>
+    <AuthContext.Provider
+      value={{ isLoggedIn, isClient, handleLogin, handleLogout }}
+    >
       {children}
     </AuthContext.Provider>
   );
