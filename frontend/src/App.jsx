@@ -6,6 +6,7 @@ import NotFound from "./pages/NotFound";
 import FastFood from "./pages/FastFood";
 import { Contact } from "./pages/Contact";
 import ShoppingCarts from "./components/ShoppingCarts";
+import { Register } from './pages/Register'
 const App = () => {
   return (
     <div className="overflow-hidden bg-white">
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/food" element={<FastFood />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
