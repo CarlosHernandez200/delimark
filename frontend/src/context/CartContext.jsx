@@ -33,7 +33,7 @@ const CartProvider = ({ children }) => {
 
   const calculateTotal = () => {
     const totalPrice = cart.reduce((accumulator, product) => {
-      return accumulator + product.id * product.quantity;
+      return accumulator + product.price * product.quantity;
     }, 0);
 
     setTotal(totalPrice);

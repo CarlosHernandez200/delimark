@@ -2,9 +2,10 @@ import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
 
 const Filters = ({ changeFilters }) => {
   const handlehangeCategory = (event) => {
-    changeFilters({
+    console.log(event.target.value)
+    changeFilters({      
       // hay que cambiarlo por categoria
-      status: event.target.value,
+      category: event.target.value,
     });
   };
 
@@ -23,7 +24,9 @@ const Filters = ({ changeFilters }) => {
             id="category"
           >
             <option value="All">Todos</option>
-            <option value="Alive">Alive</option>
+            <option value="1">pizza</option>
+            <option value="2">Alive</option>
+            <option value="3">Alive</option>
           </select>
         </div>
       </div>

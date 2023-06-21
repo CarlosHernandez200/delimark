@@ -5,14 +5,14 @@ import { ProductContext } from "../context/ProductContext";
 import Filters from "../components/Filters";
 
 const FastFood = () => {
-  const {products} = useContext(ProductContext);
+  const { products } = useContext(ProductContext);
   const [filters, SetFilters] = useState({
-    status: "All",
+    category: "All",
   });
 
   const filterProducts = (products) => {
-    return products.filter((product) => {
-      return filters.status === product.status || filters.status === "All";
+    return products.filter((product) => {      
+      return filters.category == product.category || filters.category === "All";
     });
   };
 

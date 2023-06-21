@@ -36,6 +36,8 @@ const Products = ({ products }) => {
     }
   };
 
+  console.log(products)
+
   return (
     <>
       <Toaster richColors />
@@ -55,14 +57,16 @@ const Products = ({ products }) => {
                 <div>
                   <h3 className="text-sm text-gray-700">
                     <a href={product.href}>
-                      <span aria-hidden="true"/>
+                      <span aria-hidden="true" />
                       {product.name}
                     </a>
                   </h3>
-                  <p className="mt-1 text-sm text-gray-500">{product.status}</p>
+                  <p className="mt-1 text-sm text-gray-500">
+                    {product.category_name}
+                  </p>
                 </div>
                 <p className="text-sm font-medium text-gray-900">
-                  {product.species}
+                  $ {product.price}
                 </p>
               </div>
               <button

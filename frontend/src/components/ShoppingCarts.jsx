@@ -78,10 +78,10 @@ const ShoppingCarts = () => {
                                           {product.name}
                                         </a>
                                       </h3>
-                                      <p className="ml-4">{product.id}</p>
+                                      <p className="ml-4">{product.price}</p>
                                     </div>
                                     <p className="mt-1 text-sm text-gray-500">
-                                      {product.status}
+                                      {product.category_name}
                                     </p>
                                   </div>
                                   <div className="flex flex-1 items-end justify-between text-sm">

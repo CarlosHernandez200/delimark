@@ -16,7 +16,11 @@ class productFilter(filter.Filter):
         }
 
 class ProductSerializer(serializers.ModelSerializer):
+    category_name = serializers.SerializerMethodField()
+
+    def get_category_name(self, obj):
+        return obj.category.name if obj.category else None
+
     class Meta:
         model = Product
         fields = "__all__"
-        filter_class = productFilter
