@@ -8,6 +8,7 @@ import Register from "./pages/Register";
 import ShoppingCarts from "./components/ShoppingCarts";
 import CreateProduct from "./pages/CreateProduct"
 import NotFound from "./pages/NotFound";
+import Order from './pages/Order';
 import { Footer } from "./components/Footer";
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/food" element={<FastFood />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/order" element={<Order />} />
         <Route path="/register" element={<Register />} />
         <Route path="/create-product" element={<CreateProduct />} />
         <Route path="*" element={<NotFound />} />
