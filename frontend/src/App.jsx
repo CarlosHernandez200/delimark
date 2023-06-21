@@ -10,6 +10,7 @@ import CreateProduct from "./pages/CreateProduct"
 import Order from './pages/Order';
 import ProductDescription from './components/Description';
 import NotFound from "./pages/NotFound";
+import { Footer } from "./components/Footer";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/create-product" element={<CreateProduct />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer/>
     </div>
   );
 };
