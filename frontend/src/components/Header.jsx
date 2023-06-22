@@ -28,12 +28,13 @@ const Header = () => {
     const clientMenu = [
       ...userMenu,
       { name: "Client Menu", href: "create-product", current: false },
+      { name: "Order", href: "order", current: false },
     ];
 
     const updatedNavigation = isLoggedIn
       ? isClient
         ? clientMenu
-        : [...userMenu, { name: "User Menu", href: "user", current: false }]
+        : [...userMenu, { name: "Order", href: "order", current: false }]
       : userMenu;
 
     setNavigation(updatedNavigation);
