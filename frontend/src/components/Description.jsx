@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useCard } from "../hooks/useCard";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 
 const ProductDescription = () => {
   const [product, setProduct] = useState(null);
+  const { addToCard } = useCard();
   const { id } = useParams();
 
   useEffect(() => {
@@ -42,23 +44,22 @@ const ProductDescription = () => {
           />
         </div>
         <div className="p-8">
-          <div className="text-sm font-semibold uppercase tracking-wide text-indigo-500">
+          <div className="text-2xl font-semibold uppercase tracking-wide text-indigo-500">
             {product.name}
           </div>
-          <h1 className="mt-2 text-3xl font-bold text-gray-900">
-            Descripción del Producto
-          </h1>
           <p className="mt-2 text-gray-600">{product.description}</p>
-          <div className="mt-4 flex items-center justify-between">
+          <div className="mt-4 flex flex-col items-center justify-between">
             <div className="text-2xl font-bold text-gray-900">
               Precio: ${product.price}
             </div>
+
             {/* Agrega botones u opciones relacionadas con el producto aquí */}
-            <button className="mt-4 flex w-full justify-center gap-x-2 rounded-md bg-indigo-600 py-2 text-white">
-              <>
-                <ShoppingCartIcon className="h-5 w-5" />
-                add
-              </>
+            <button
+              className="mt-4 flex w-full justify-center gap-x-2 rounded-md bg-indigo-600 py-2 text-white"
+              onClick={() => addToCard(product)}
+            >
+              <ShoppingCartIcon className="h-5 w-5" />
+              add
             </button>
           </div>
         </div>

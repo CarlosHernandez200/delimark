@@ -25,8 +25,9 @@ const Filters = ({ changeFilters }) => {
           >
             <option value="All">Todos</option>
             <option value="1">pizza</option>
-            <option value="2">Alive</option>
-            <option value="3">Alive</option>
+            <option value="2">Hamburguesa</option>
+            <option value="3">Sushi</option>
+            <option value="4">Salchipapa</option>
           </select>
         </div>
       </div>
